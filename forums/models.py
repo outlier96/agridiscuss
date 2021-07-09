@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class forum(models.Model):
@@ -13,8 +14,10 @@ class forum(models.Model):
         return str(self.topic)
 
 class categories(models.Model):
-     choose_category=[('ff','fish farming'),('af','animal farming'),('cr','crops'),('bp','best_practices'),('gn','general')]       
+    choose_category=[('ff','fish farming'),('af','animal farming'),('cr','crops'),('bp','best_practices'),('gn','general')]       
  
+    def __str__(self):
+            return str(self.topic)
 class Discussion(models.Model):
     forum = models.ForeignKey(forum,blank=True,on_delete=models.CASCADE)
     discuss = models.CharField(max_length=1000)
